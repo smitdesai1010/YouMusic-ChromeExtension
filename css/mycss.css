@@ -1,0 +1,13 @@
+html{
+    height: 0px;
+}
+
+body{
+    height: 30px;
+    width: 250px;
+}
+
+h2{
+    color: #FF0000;
+    font-weight: bolder;
+}
