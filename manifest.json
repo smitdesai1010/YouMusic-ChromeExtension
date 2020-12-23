@@ -4,12 +4,14 @@
     "description": "YouTube Music Player",
     "version": "1.0",
 
-
     "browser_action": {
         "default_icon": "icon/icon.png",
         "default_popup": "popup.html"
     },
 
+    "background":{
+        "scripts": ["js/background.js"]
+    },
 
     "permissions": [
         "activeTab",
