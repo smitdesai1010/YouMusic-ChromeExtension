@@ -28,8 +28,12 @@
             <span class="volume-up"><i class="material-icons">add</i></span>
         </div>
         <div class="btn-box">
-            <i class="material-icons repeat" onclick="handleRepeat()">repeat</i>
-            <i class="material-icons download" onclick="handleFavorite()">favorite</i>
+            <i class="material-icons" onclick="handleRepeat()">cached</i>
+           
+            <a href="#" download="a.mp3" id="download">
+                <i class="material-icons">get_app</i>
+            </a>
+           
             <i class="material-icons volume" onclick="handleVolume()">volume_up</i>
         </div>
         <div class="music-box">
@@ -38,6 +42,7 @@
             <audio class="music-element">
                 <source src="https://hosseinghanbari.ir/other/music-player/autumn.mp3" type="audio/mp3">
             </audio>
+
             <span class="current-time">0:0</span><span class="duration">0:0</span>
             <span class="play" onclick="handlePlay()">
                 <i class="material-icons">play_arrow</i>
@@ -45,6 +50,7 @@
         </div>
     </div>
 
-    <script src="music.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/data.js"></script>
 </body>
 </html>

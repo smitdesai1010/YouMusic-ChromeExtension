@@ -5,6 +5,9 @@ var seekbar = document.querySelector('.seekbar')
 var currentTime = document.querySelector('.current-time')
 var duration = document.querySelector('.duration')
 
+//document.getElementById("download").href = document.querySelector("source").src;
+//alert('ok')
+
 function handlePlay() {
     if (music.paused) {
         music.play();
@@ -28,6 +31,7 @@ music.onloadeddata = function () {
     var dm = parseInt((music.duration / 60) % 60)
     duration.innerHTML = dm + ':' + ds
 }
+
 music.ontimeupdate = function () { seekbar.value = music.currentTime }
 handleSeekBar = function () { music.currentTime = seekbar.value }
 music.addEventListener('timeupdate', function () {
@@ -37,25 +41,11 @@ music.addEventListener('timeupdate', function () {
 }, false)
 
 
-// like
-var favIcon = document.querySelector('.favorite')
-function handleFavorite() {
-    favIcon.classList.toggle('active');
-}
-
-
 // repeat
-var repIcon = document.querySelector('.repeat')
 function handleRepeat() {
-    if (music.loop == true) {
-        music.loop = false
-        repIcon.classList.toggle('active')
-    }
-    else {
-        music.loop = true
-        repIcon.classList.toggle('active')
-    }
+   music.currentTime = 0;
 }
+
 
 // volume
 var volIcon = document.querySelector('.volume')
