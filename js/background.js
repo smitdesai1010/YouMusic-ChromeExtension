@@ -17,6 +17,7 @@ async function letsGo(data){
         chrome.downloads.download( {url:link} )
      
     else
+        //chrome.tabs.create({ url: 'Musicplayer/index.html#'+link+'&'+id });
         window.open('Musicplayer/index.html#'+link+'&'+id)
 }
 
@@ -26,7 +27,7 @@ async function request( id ){
 
     const response = await fetch('https://www.yt-download.org/api/button/mp3/'+id)
     var html = await response.text()
-    console.log(html)
+
     html = html.slice( html.indexOf('div') )
     html = html.slice( html.indexOf('https') )
     html = html.split('"',1)

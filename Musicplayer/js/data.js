@@ -8,4 +8,3 @@ document.querySelector('source').src = link
 document.getElementById("download").href = link
 document.querySelector('img').src = 'https://img.youtube.com/vi/'+id+'/0.jpg'
 
-//setTimeout( () => alert('timeout over'), 5000);
