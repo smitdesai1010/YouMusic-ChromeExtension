@@ -1,11 +1,26 @@
-//adding event handlers
+//getting data ready
+var window_url = window.location.href
+var link = window_url.substring( window_url.indexOf('#') + 1 , window_url.indexOf('&') )
+var id = window_url.substring( window_url.indexOf('&') + 1 )
 
+console.log(link)
+
+document.getElementById("download").href = link
+document.querySelector('img').src = 'https://img.youtube.com/vi/'+id+'/0.jpg'
+
+setTimeout(() => {music.currentTime = 10;alert(music.duration)}, 7000);
+
+//adding event handlers
 document.querySelector(".play").addEventListener("click",handlePlay)
 document.querySelector("#repeat").addEventListener("click",() => music.currentTime = 0)
 document.querySelector("#volume").addEventListener("click",handleVolume)
+document.querySelector('.seekbar').addEventListener("input",e =>  music.currentTime = e.target.value )
+document.querySelector('.volume-range').addEventListener("input", e => music.volume = e.target.value/100)
 
 // player
-var music = document.querySelector('.music-element')
+var music = new Audio()
+music.src = link
+
 var playBtn = document.querySelector('.play')
 var seekbar = document.querySelector('.seekbar')
 var currentTime = document.querySelector('.current-time')
@@ -42,9 +57,8 @@ music.onloadeddata = () => {
 
 music.ontimeupdate = () => seekbar.value = music.currentTime 
 
-handleSeekBar = () =>  music.currentTime = seekbar.value 
-
 music.addEventListener('timeupdate', () => {
+    console.log('pllll')
     var cs = parseInt(music.currentTime % 60)
     var cm = parseInt((music.currentTime / 60) % 60)
     currentTime.innerHTML = cm + ':' + cs

@@ -25,8 +25,7 @@
 
         <div class="volume-box">
             <span class="volume-down"><i class="material-icons">remove</i></span>
-            <input type="range" class="volume-range" step="1" value="80" min="0" max="100"
-                oninput="music.volume = this.value/100">
+            <input type="range" class="volume-range" step="1" value="80" min="0" max="100">
             <span class="volume-up"><i class="material-icons">add</i></span>
         </div>
         
@@ -41,11 +40,7 @@
         </div>
         
         <div class="music-box">
-            <input type="range" step="1" class="seekbar" value="0" min="0" max="100" oninput="handleSeekBar()">
-
-            <audio class="music-element">
-                <source src="" type="audo/mp3">
-            </audio>
+            <input type="range" step="1" class="seekbar" value="0" min="0" max="100">
 
             <span class="current-time">0:0</span><span class="duration">0:0</span>
            
@@ -56,7 +51,6 @@
         </div>
     </div>
 
-    <script src="js/data.js"></script>
     <script src="js/music.js"></script>
 </body>
 </html>
