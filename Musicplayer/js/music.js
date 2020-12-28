@@ -1,14 +1,11 @@
 //getting data ready
 var window_url = window.location.href
-var link = window_url.substring( window_url.indexOf('#') + 1 , window_url.indexOf('&') )
-var id = window_url.substring( window_url.indexOf('&') + 1 )
+var str = window_url.substring( window_url.indexOf('#') + 1 )
+var json = JSON.parse(atob(str))
 
-console.log(link)
-
-document.getElementById("download").href = link
-document.querySelector('img').src = 'https://img.youtube.com/vi/'+id+'/0.jpg'
-
-setTimeout(() => {music.currentTime = 10;alert(music.duration)}, 7000);
+document.getElementById("download").href = json.link
+document.querySelector('img').src = json.Thumbnail
+document.querySelector('.title').innerHTML = json.Title.substring(0,json.Title.indexOf('|'))
 
 //adding event handlers
 document.querySelector(".play").addEventListener("click",handlePlay)
@@ -19,13 +16,21 @@ document.querySelector('.volume-range').addEventListener("input", e => music.vol
 
 // player
 var music = new Audio()
-music.src = link
+music.src = json.link
+music.preload = "auto"
 
 var playBtn = document.querySelector('.play')
 var seekbar = document.querySelector('.seekbar')
 var currentTime = document.querySelector('.current-time')
 var duration = document.querySelector('.duration')
 
+/*
+async function getsrc(){
+    const response = await fetch(link)
+    var blob = await response.blob()
+    return window.URL.createObjectURL(blob)
+}
+*/
 
 function handlePlay() {
 
@@ -58,7 +63,6 @@ music.onloadeddata = () => {
 music.ontimeupdate = () => seekbar.value = music.currentTime 
 
 music.addEventListener('timeupdate', () => {
-    console.log('pllll')
     var cs = parseInt(music.currentTime % 60)
     var cm = parseInt((music.currentTime / 60) % 60)
     currentTime.innerHTML = cm + ':' + cs

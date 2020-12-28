@@ -83,15 +83,16 @@ html, body {
 }
 .player .info {
     position: absolute;
+    width: 100%;
     left: 50%;
     top: 240px;
     transform: translateX(-50%);
     text-align: center;
 }
 .player .info .title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
-    color: #444;
+    color: black;
     margin-bottom: 2px;
 }
 .player .info .singer {
