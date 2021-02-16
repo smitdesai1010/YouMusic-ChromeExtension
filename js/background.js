@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener( letsGo );
-
+HOST = 'http://localhost:3000'
 
 async function letsGo(data){
    
@@ -9,29 +9,19 @@ async function letsGo(data){
         return true;
     }
 
-    var id = data.url.substring( data.url.indexOf('=') + 1 , data.url.indexOf('=') + 12 )
-    var res = await request(id)
+    var Id = data.url.substring( data.url.indexOf('=') + 1 , data.url.indexOf('=') + 12 )
+    var response = await fetch(`${HOST}/download/info/${Id}`)
+    var description = await response.json()
 
-    if (data.tag == 'Download')
-        chrome.downloads.download( {url: res.link} )
+    description.Title = description.Title.replace(/[^a-zA-Z ]/g, "").trim()
+
+    if (data.tag == 'Download')  
+        chrome.downloads.download( {url: `${HOST}/download/${Id}`,
+                                    filename: description.Title+'.mp3'} )
      
     else
-        window.open('Musicplayer/index.html#'+btoa(JSON.stringify(res)))
+        window.open('Musicplayer/index.html#'+btoa(JSON.stringify(description)))
 }
 
 
-
-async function request( id ){ 
-
-    const response = await fetch("https://youtube-to-mp32.p.rapidapi.com/yt_to_mp3?video_id="+id, {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": "9ed15ca3c6msha64abc9783484fdp192ee8jsn65554c504a3d",
-            "x-rapidapi-host": "youtube-to-mp32.p.rapidapi.com"
-        }
-    })
-
-    var json = await response.json()
-    return {'link': json.Download_url,'Title': json.Title, 'Thumbnail': json.Video_Thumbnail };
-}
   

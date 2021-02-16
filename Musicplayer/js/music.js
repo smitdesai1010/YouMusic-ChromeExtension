@@ -3,7 +3,7 @@ var window_url = window.location.href
 var str = window_url.substring( window_url.indexOf('#') + 1 )
 var json = JSON.parse(atob(str))
 
-document.getElementById("download").href = json.link
+document.getElementById("download").href = `http://localhost:3000/download/${json.Id}`
 document.querySelector('img').src = json.Thumbnail
 document.querySelector('.title').innerHTML = json.Title.substring(0,json.Title.indexOf('|'))
 
@@ -16,7 +16,7 @@ document.querySelector('.volume-range').addEventListener("input", e => music.vol
 
 // player
 var music = new Audio()
-music.src = json.link
+music.src = `http://localhost:3000/media/${json.Id}`
 music.preload = "auto"
 
 var playBtn = document.querySelector('.play')
@@ -24,13 +24,6 @@ var seekbar = document.querySelector('.seekbar')
 var currentTime = document.querySelector('.current-time')
 var duration = document.querySelector('.duration')
 
-/*
-async function getsrc(){
-    const response = await fetch(link)
-    var blob = await response.blob()
-    return window.URL.createObjectURL(blob)
-}
-*/
 
 function handlePlay() {
 
