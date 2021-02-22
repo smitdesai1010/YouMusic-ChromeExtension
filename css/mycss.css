@@ -1,13 +1,18 @@
 html{
-    height: 0px;
-}
-
-body{
-    height: 30px;
+    height: auto;
     width: 250px;
 }
 
 h2{
     color: #FF0000;
     font-weight: bolder;
+}
+
+.btn{
+    background-color: rgba(255, 0, 0);
+    border-color: red;
+}
+
+.btn:hover{
+    background-color: red;
 }
