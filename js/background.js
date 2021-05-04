@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener( letsGo );
-HOST = 'http://localhost:3000'
+HOST = 'https://youmusicc.herokuapp.com';
 
 async function letsGo(data){
    
@@ -15,12 +15,15 @@ async function letsGo(data){
 
     description.Title = description.Title.replace(/[^a-zA-Z ]/g, "").trim()
 
-    if (data.tag == 'Download')  
+    if (data.tag == 'Download') 
+    { 
+        alert('Your download will begin soon')
         chrome.downloads.download( {url: `${HOST}/download/${Id}`,
                                     filename: description.Title+'.mp3'} )
-     
+    } 
+
     else
-        window.open('Musicplayer/index.html#'+btoa(JSON.stringify(description)))
+        window.open('Musicplayer/index.html?Id='+description.Id)
 }
 
 

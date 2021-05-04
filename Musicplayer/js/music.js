@@ -1,11 +1,17 @@
-//getting data ready
-var window_url = window.location.href
-var str = window_url.substring( window_url.indexOf('#') + 1 )
-var json = JSON.parse(atob(str))
+//getting data ready;
+const params = new URLSearchParams(window.location.search);
+const Id = params.get('Id');
+HOST = 'https://youmusicc.herokuapp.com';
 
-document.getElementById("download").href = `http://localhost:3000/download/${json.Id}`
-document.querySelector('img').src = json.Thumbnail
-document.querySelector('.title').innerHTML = json.Title.substring(0,json.Title.indexOf('|'))
+fetch(`${HOST}/download/info/${Id}`)
+.then(res => res.json())
+.then(json => {
+    document.getElementById("title").innerHTML = json.Title;
+    document.querySelector('img').src = json.Thumbnail
+})
+.catch(error => console.log('Unable to fetch information regarding this song '+error.message))
+
+document.getElementById("download").href = `${HOST}/download/${Id}`
 
 //adding event handlers
 document.querySelector(".play").addEventListener("click",handlePlay)
@@ -16,7 +22,7 @@ document.querySelector('.volume-range').addEventListener("input", e => music.vol
 
 // player
 var music = new Audio()
-music.src = `http://localhost:3000/media/${json.Id}`
+music.src = `${HOST}/media/${Id}`
 music.preload = "auto"
 
 var playBtn = document.querySelector('.play')
