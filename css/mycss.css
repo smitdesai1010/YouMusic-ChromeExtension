@@ -3,9 +3,17 @@ html{
     width: 250px;
 }
 
+#heading, #profile{
+    text-align: center;
+}
+
 h2{
     color: #FF0000;
     font-weight: bolder;
+}
+
+p{
+    margin: 0px;
 }
 
 .btn{
@@ -15,4 +23,16 @@ h2{
 
 .btn:hover{
     background-color: red;
+}
+
+a,a:hover{
+    margin-top: 5px;
+    cursor: pointer;
+    color: red;
+    text-decoration:none;
+    font-size: 10px;
+}
+
+#profile{
+    font-size: 12px;
 }
