@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 const Id = params.get('Id');
 HOST = 'https://youmusicc.herokuapp.com';
 
-fetch(`${HOST}/download/info/${Id}`)
+fetch(`${HOST}/audio/info/${Id}`)
 .then(res => res.json())
 .then(json => {
     document.getElementById("title").innerHTML = json.Title;
@@ -11,7 +11,7 @@ fetch(`${HOST}/download/info/${Id}`)
 })
 .catch(error => console.log('Unable to fetch information regarding this song '+error.message))
 
-document.getElementById("download").href = `${HOST}/download/${Id}`
+document.getElementById("download").href = `${HOST}/audio/download/${Id}`
 
 //adding event handlers
 document.querySelector(".play").addEventListener("click",handlePlay)
@@ -22,7 +22,7 @@ document.querySelector('.volume-range').addEventListener("input", e => music.vol
 
 // player
 var music = new Audio()
-music.src = `${HOST}/media/${Id}`
+music.src = `${HOST}/audio/stream/${Id}`
 music.preload = "auto"
 
 var playBtn = document.querySelector('.play')
