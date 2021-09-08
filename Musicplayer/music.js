@@ -7,7 +7,12 @@ fetch(`${HOST}/audio/info/${Id}`)
 .then(res => res.json())
 .then(json => {
     document.getElementById("title").innerHTML = json.Title;
-    document.querySelector('img').src = json.Thumbnail
+    document.querySelector('img').src = json.Thumbnail;
+
+    // load audio once information if fetched
+    var music = new Audio()     
+    music.src = `${HOST}/audio/stream/${Id}`
+    music.preload = "auto"
 })
 .catch(error => console.log('Unable to fetch information regarding this song '+error.message))
 
@@ -20,10 +25,6 @@ document.querySelector("#volume").addEventListener("click",handleVolume)
 document.querySelector('.seekbar').addEventListener("input",e =>  music.currentTime = e.target.value )
 document.querySelector('.volume-range').addEventListener("input", e => music.volume = e.target.value/100)
 
-// player
-var music = new Audio()
-music.src = `${HOST}/audio/stream/${Id}`
-music.preload = "auto"
 
 var playBtn = document.querySelector('.play')
 var seekbar = document.querySelector('.seekbar')
