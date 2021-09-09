@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "YouMusic",
-    "description": "YouTube Music Player",
+    "description": "A chrome extension that streams and downloads any song from YouTube",
     "version": "1.0",
 
     "browser_action": {

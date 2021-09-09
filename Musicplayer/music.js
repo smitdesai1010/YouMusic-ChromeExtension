@@ -1,6 +1,7 @@
 //getting data ready;
 const params = new URLSearchParams(window.location.search);
 const Id = params.get('Id');
+const music = new Audio();   
 HOST = 'https://youmusicc.herokuapp.com';
 
 fetch(`${HOST}/audio/info/${Id}`)
@@ -9,8 +10,7 @@ fetch(`${HOST}/audio/info/${Id}`)
     document.getElementById("title").innerHTML = json.Title;
     document.querySelector('img').src = json.Thumbnail;
 
-    // load audio once information if fetched
-    var music = new Audio()     
+    // load audio once information if fetched  
     music.src = `${HOST}/audio/stream/${Id}`
     music.preload = "auto"
 })
