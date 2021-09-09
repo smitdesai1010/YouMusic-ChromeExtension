@@ -4,12 +4,16 @@ A chrome extension that streams and downloads any song from YouTube
 
 Note: This is a side-application of [YouMusic](https://github.com/smitdesai1010/YouMusic)
 
-## Screenshots
+<details>
+    <summary style="cursor:pointer; font-size: 28px; font-weight: bold; font">Screenshots</summary>
+    <p width="100%">
+      <img src="Assets/SS-2.jpg" width="45%" height="700"/>
+      <img src="Assets/SS-1.jpg" width="50%" height="250"/>
+    </p>
+</details>
 
-<p width="100%">
-  <img src="Assets/SS-2.jpg" width="45%" height="700"/>
-  <img src="Assets/SS-1.jpg" width="50%" height="250"/>
-</p>
+<br/>
+
 
 ## Run Locally
 
