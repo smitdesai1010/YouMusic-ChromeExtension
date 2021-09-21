@@ -2,7 +2,7 @@
 
 A chrome extension that streams and downloads any song from YouTube
 
-Note: This is a side-application of [YouMusic](https://github.com/smitdesai1010/YouMusic)
+Note: This is a side-application of [YouMusic](https://github.com/smitdesai1010/YouMusic#youmusic)
 
 <details>
     <summary style="cursor:pointer; font-size: 28px; font-weight: bold; font">Screenshots</summary>
